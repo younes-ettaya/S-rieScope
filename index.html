@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AutoPark — Interface de gestion du parc automobile Atlas Auto." />
+    <title>Sériescope</title>
+    <script type="module" src="tailwind.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-slate-950">
+    <header>
+        <nav class=" bg-black flex p-4 gap-3 ">
+            <p class="text-black rounded-[8px] w-fit p-1 bg-white">efne</i></p>
+            <p class="text-white font-bold text-[20px] ">Sériescope</p>
+        </nav>
+    </header>
+    <section>
+        <div class="p-4">
+            <h1 class="text-white font-bold text-[27px]">Explore les séries TV</h1>
+            <p class="text-gray-400 text-[12px]">Retrouve tes séries préférées et enrichis le catalogue.</p>
+        </div>
+    </section>
+    <section class="p-4 ">
+        <div class=" grid grid-cols-1 gap-4 border-2  rounded-[8px] border-slate-300 bg-slate-900 p-4">
+
+            <div>
+                <h3 class="text-white font-bold text-[18px] ">Ajouter une série</h3>
+                <p class="text-gray-400 text-[13px]">Les champs marqués d’un * sont obligatoires.</p>
+            </div>
+            <form class="grid grid-cols-1 gap-4 lg:grid-cols-6">
+
+                <div action="" class="flex flex-col gap-2 lg:col-span-3">
+                    <label for="NomSrie" class="text-white font-medium">Nom de la série *</label>
+                    <input class="text-white p-2 rounded-[8px] border-2" type="text" id="inputName"
+                        placeholder="Ex. The Bear" required>
+
+                </div>
+                <div action="" class="flex flex-col gap-2 lg:col-span-3">
+                    <label for="categorie" class="text-white font-medium">Genre(s) * <span
+                            class="text-gray-400 text-[12px]">séparés par des virgules</span></label>
+                    <input class="text-white p-2 rounded-[8px] border-2" type="text" id="categorie" name="categorie"
+                        placeholder="Ex. Drame, Comédie" required>
+
+                </div>
+                <div class="flex flex-col gap-2 lg:col-span-6">
+
+                    <label for="description" class="text-white font-medium">Description * <span
+                            class="text-gray-400 text-[12px]">facultative</span></label>
+                    <textarea name="description" id="description" placeholder="effefef" required
+                        class="text-white p-2 border-2 rounded-[8px] "></textarea>
+                </div>
+                <div class="flex flex-col gap-2 justify-center lg:col-span-1">
+                    <button class="bg-white text-slate-950 border-none rounded-[8px] p-2 font-medium">＋ Ajouter la
+                        série</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="p-4">
+        <div class="p-1">
+
+            <h2 class="text-white font-bold text-[22px] ">Catalogue des séries</h2>
+            <p class="text-gray-400">Recherche par nom ou explore un genre.</p>
+        </div>
+        <div class="felx flex-col bg-slate-900 p-4 border-2  rounded-[8px] border-slate-300">
+            <form action="" class="grid grid-cols-1  gap-2 lg:grid-cols-2">
+                <div class="flex flex-col gap-2">
+                    <label for="Recherche" class="text-white font-medium">Recherche</label>
+                    <input type="text" class="text-white border-2 rounded-[8px] p-2" id="Recherche" name="Recherche"
+                        placeholder="Ex. Drame, Comédie">
+                </div>
+                <div class=" flex flex-col gap-2">
+                    <label for="Genre" class=" text-white font-medium">Genre</label>
+
+
+                    <div class="grid grid-cols-2 gap-2 lg:grid-cols-3">
+                        <select name="Genre" id="Genre" class="text-white border-2 rounded-[8px] p-2 lg:col-span-2">
+                            <option value="Tous les genres" class="text-gray-400">Tous les genres</option>
+                            <option value="drama" class="text-black font-medium">Drama</option>
+                            <option value="action" class="text-black font-medium">Action</option>
+                            <option value="romantique" class="text-black font-medium">Romantique</option>
+                        </select>
+
+
+                        <button type="reset" class="text-white border-2 rounded-[8px] p-2">↻ Réinitialiser</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+
+
+        <p class="text-gray-400 p-1">6 séries affichées</p>
+        <div class=" grid grid-cols-1 gap-2 p-1 lg:grid-cols-4 md:grid-cols-2" id="liste-serie">
+
+           
+
+            <!-- <div class="flex flex-col gap-2 border-2  rounded-[8px] border-slate-300 bg-slate-900 ">
+                <img src="assest\better call saul.jpg" alt=""  class="rounded-t-[8px] h-[55%]">
+                <h3 class="font-bold text-gray-100 p-2">Breaking Bad</h3>
+                <div class="flex gap-2 px-2">
+                    <p class="bg-slate-600 font-medium px-2 rounded-[15px]">Drame</p>
+                    <p class="bg-slate-600 font-medium  px-2 rounded-[15px]">Policier</p>
+
+                </div>
+                <p class="text-gray-400 p-2 text-[12px]">Un professeur de chimie mène une double vie.</p>
+            </div> -->
+        </div>
+    </section>
+
+</body>
+
+</html>
