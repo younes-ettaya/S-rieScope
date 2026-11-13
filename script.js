@@ -36,7 +36,7 @@ const champgenre = document.getElementById("champgenre");
 const champdesc = document.getElementById("champdesc");
 
 
-let tabl = ["All"];
+let tabl = [];
 let compteur = 22;
 
 // la fonction qui afficher les serie .
@@ -90,12 +90,8 @@ function displaySeries(arr) {
 
         description.textContent = temp.textContent;
         Div1.appendChild(description);
-
-
     })
-
-
-
+    getgenre()
 }
 displaySeries(arr);
 
@@ -119,67 +115,63 @@ function Ajouter() {
 }
 
 
-
-arr.forEach(serie => {
-    serie.genres.forEach(catey => {
-        if (!tabl.includes(catey)) {
-            tabl.push(catey);
-        }
-    });
-})
-
-tabl.forEach(catey => {
-    const option = document.createElement("option");
-    option.textContent = catey;
-    option.value = catey;
-    option.className = "text-black";
-    srchgenre.appendChild(option);
-});
-let k = 0, option;
-let tabloption = [];
-
-srchgenre.addEventListener('change', (e) => {
-    e.preventDefault();
-    option = srchgenre.value.trim();
-
-
+function getgenre() {
     arr.forEach(serie => {
-
-        serie.genres.forEach(caty => {
-
-            if (caty === option) {
-                tabloption.push(serie)
+        serie.genres.forEach(catey => {
+            if (!tabl.includes(catey)) {
+                tabl.push(catey);
             }
-            if (option === "All") {
-                tabloption = arr;
-            }
-
-
-        })
-
+        });
     })
 
-    displaySeries(tabloption);
+    const option = document.createElement("option");
+    option.textContent = "touts les catygorie";
+    option.value = "";
+    option.className = "text-black";
+    srchgenre.appendChild(option);
+    tabl.forEach(catey => {
+        const option = document.createElement("option");
+        option.textContent = catey;
+        option.value = catey;
+        option.className = "text-black";
+        srchgenre.appendChild(option);
+    });
+}
+// let k = 0, option;
 
 
-});
+function validation() {
+    let chcker = true;
+    champnom.hidden = true;
+    champgenre.hidden = true;
+    champdesc.hidden = true;
 
+    if (inputName.value === "") {
+        champnom.hidden = false;
+        chcker = false;
+    }
+    if (categorie.value === "") {
+        champgenre.hidden = false;
+        chcker = false;
+
+    }
+
+    if (description.value === "") {
+        champdesc.hidden = false;
+        chcker = false;
+
+    }
+    return chcker;
+}
 
 btnAjouter.addEventListener('click', (e) => {
     e.preventDefault();
-    if (inputName.value === "") {
-        champnom.hidden = false;
 
+    if (!validation()) {
+        return
     }
-    if (categorie.value === "") {
 
-        champgenre.hidden = false;
-    }
-    if (description.value === "") {
-
-        champdesc.hidden = false;
-    }
-    else {
+    else if (description.value !== "" || categorie.value !== "" || inputName.value !== "") {
 
         Ajouter();
         champnom.hidden = true;
@@ -193,18 +185,28 @@ btnAjouter.addEventListener('click', (e) => {
 Réinitialiser.addEventListener('click', (e) => {
     e.preventDefault();
     Recherche.value = "";
-
+    srchgenre.selectedIndex = 0
     displaySeries(arr);
 
 })
-Recherche.addEventListener('input', function () {
+
+function search_sort() {
+
     const namesrch = Recherche.value.trim().toLowerCase();
 
-    const resultat = arr.filter(serie => {
-        return serie.name.trim().toLowerCase().includes(namesrch);
-    });
+    let resultat = arr.filter(serie => serie.name.trim().toLowerCase().includes(namesrch));
+    // console.log(resultat);
+
+    if (srchgenre.value) {
+        resultat = resultat.filter(genre => genre.genres.includes(srchgenre.value))
+        console.log(resultat);
+
+    }
+    // console.log(resultat);
 
     displaySeries(resultat);
+}
 
-});
 
+Recherche.addEventListener('input', search_sort)
+srchgenre.addEventListener('change', search_sort)
