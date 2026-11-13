@@ -1,6 +1,6 @@
 # SérieScope
 
-**SérieScope** est une application web permettant de découvrir des séries TV, de rechercher un titre et de parcourir le catalogue par genre. Les premières séries sont récupérées depuis l'API publique [TVmaze](https://www.tvmaze.com/api).
+**SérieScope** est une application web permettant de découvrir des séries TV, de rechercher un titre et de parcourir le catalogue par genre. Les premières séries sont récupérées depuis l'API publique 
 
 ## Fonctionnalités
 
@@ -40,4 +40,4 @@ S-rieScope/
 
 ## Auteur
 
-Développé par [Younes Ettaya](https://github.com/younes-ettaya).
+Développé par [Younes Ettaya](https://younes-ettaya.github.io/S-rieScope/).
