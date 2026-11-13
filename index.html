@@ -14,7 +14,7 @@
 <body class="bg-slate-950">
     <header>
         <nav class=" bg-black flex p-4 gap-3 ">
-            <p class="text-black rounded-[8px] w-fit p-1 bg-white"></p>
+            <p class="text-black rounded-[8px] w-fit p-1 bg-white font-bold">🎬</p>
             <p class="text-white font-bold text-[20px] ">Sériescope</p>
         </nav>
     </header>
@@ -37,25 +37,29 @@
                     <label for="NomSrie" class="text-white font-medium">Nom de la série *</label>
                     <input class="text-white p-2 rounded-[8px] border-2" type="text" id="inputName"
                         placeholder="Ex. The Bear" required>
+                    <p id="champnom" class="text-red-800" hidden>Nom invalid</p>
 
                 </div>
                 <div action="" class="flex flex-col gap-2 lg:col-span-3">
                     <label for="categorie" class="text-white font-medium">Genre(s) * <span
-                            class="text-gray-400 text-[12px]">séparés par des virgules</span></label>
+                            class="text-gray-400  text-[12px]">séparés par des virgules</span></label>
                     <input class="text-white p-2 rounded-[8px] border-2" type="text" id="categorie" name="categorie"
                         placeholder="Ex. Drame, Comédie" required>
+                    <p id="champgenre" class="text-red-800" hidden>Genre invalid</p>
 
                 </div>
                 <div class="flex flex-col gap-2 lg:col-span-6">
 
                     <label for="description" class="text-white font-medium">Description * <span
                             class="text-gray-400 text-[12px]">facultative</span></label>
-                    <textarea name="description" id="description" placeholder="effefef" required
+                    <textarea name="description" id="description" placeholder="description de serie " required
                         class="text-white p-2 border-2 rounded-[8px] "></textarea>
+                    <p id="champdesc" class="text-red-800" hidden>Description invalid</p>
+
                 </div>
                 <div class="flex flex-col gap-2 justify-center lg:col-span-1">
-                    <button class="bg-white text-slate-950 border-none rounded-[8px] p-2 font-medium">＋ Ajouter la
-                        série</button>
+                    <button class="bg-white text-slate-950 border-none rounded-[8px] p-2 font-medium" id="btnAJouter">＋
+                        Ajouter la série</button>
                 </div>
             </form>
         </div>
@@ -79,12 +83,12 @@
 
                     <div class="grid grid-cols-2 gap-2 lg:grid-cols-3">
                         <select name="Genre" id="Genre" class="text-white border-2 rounded-[8px] p-2 lg:col-span-2">
-                            <option value="Tous les genres" class="text-gray-400">Tous les genres</option>
-              
+
                         </select>
 
 
-                        <a type="reset" class="text-white border-2 rounded-[8px] p-2 " href="index.html" >↻ Réinitialiser</a>
+                        <button type="reset" class="text-white border-2 rounded-[8px] p-2 " id="Réinitialiser">↻
+                            Réinitialiser</button>
                     </div>
                 </div>
 
@@ -93,11 +97,8 @@
         </div>
 
 
-
-        <p class="text-gray-400  p-1">6 séries affichées</p>
+        <p class="text-gray-400  p-1" id="affichées"></p>
         <div class=" grid grid-cols-1 gap-2 p-1 lg:grid-cols-4 md:grid-cols-2" id="liste-serie">
-
-           
 
             <!-- <div class="flex flex-col gap-2 border-2  rounded-[8px] border-slate-300 bg-slate-900 ">
                 <img src="assest\better call saul.jpg" alt=""  class="rounded-t-[8px] h-[55%]">

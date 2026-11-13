@@ -4,7 +4,6 @@ let arr = [];
 
 
 // lappel de la fonction fetchdata.
-fetchdata();
 
 async function fetchdata() {
     const resp = await fetch("https://api.tvmaze.com/shows?page=0");
@@ -16,23 +15,45 @@ async function fetchdata() {
 
     const data = await resp.json();
     for (let i = 0; i < 20; i++) arr.push(data[i]);
-    console.log(arr);
 
-    displaySeries(arr)
+    return arr;
 }
 
+arr = await fetchdata();
 // declaration des variables .
 const liste_serie = document.getElementById("liste-serie");
 const inputName = document.getElementById("inputName");
-const Genre = document.getElementById("Genre");
+const srchgenre = document.getElementById("Genre");
 const Recherche = document.getElementById("Recherche");
+const categorie = document.getElementById("categorie");
+const description = document.getElementById("description");
+const btnAjouter = document.getElementById("btnAJouter");
+const affichées = document.getElementById("affichées");
+const Réinitialiser = document.getElementById("Réinitialiser");
+
+const champnom = document.getElementById("champnom");
+const champgenre = document.getElementById("champgenre");
+const champdesc = document.getElementById("champdesc");
+
+
+let tabl = ["All"];
+let compteur = 22;
 
 // la fonction qui afficher les serie .
 function displaySeries(arr) {
 
     liste_serie.textContent = "";
+    if (arr.length > 0) {
+        affichées.textContent = arr.length + " affichées ";
+    }
+    else {
+        affichées.textContent = "0  affichées ";
+    }
 
     arr.forEach(serie => {
+
+
+
         const Div1 = document.createElement("div");
         Div1.setAttribute("class", "flex flex-col gap-2 border-2 rounded-[8px] border-slate-300 bg-slate-900 ");
         liste_serie.appendChild(Div1);
@@ -70,31 +91,120 @@ function displaySeries(arr) {
         description.textContent = temp.textContent;
         Div1.appendChild(description);
 
+
     })
 
 
-}
-
-function Ajouter(){
-let obj={}
 
 }
+displaySeries(arr);
 
-Recherche.addEventListener('input', function(){
+function Ajouter() {
+    let obj = {
+        id: compteur++,
+        name: inputName.value,
+        summary: description.value,
+        image: { original: "assest/image_par_defaut.webp" },
+        genres: categorie.value.split(",")
+
+    };
+    // obj.image.original = "assest/image_par_defaut.webp"
+    arr.push(obj);
+    console.log(arr);
+
+
+    inputName.value = "";
+    description.value = "";
+    categorie.value = "";
+}
+
+
+
+arr.forEach(serie => {
+    serie.genres.forEach(catey => {
+        if (!tabl.includes(catey)) {
+            tabl.push(catey);
+        }
+    });
+})
+
+tabl.forEach(catey => {
+    const option = document.createElement("option");
+    option.textContent = catey;
+    option.value = catey;
+    option.className = "text-black";
+    srchgenre.appendChild(option);
+});
+let k = 0, option;
+let tabloption = [];
+
+srchgenre.addEventListener('change', (e) => {
+    e.preventDefault();
+    option = srchgenre.value.trim();
+
+
+    arr.forEach(serie => {
+
+        serie.genres.forEach(caty => {
+
+            if (caty === option) {
+                tabloption.push(serie)
+            }
+            if (option === "All") {
+                tabloption = arr;
+            }
+
+
+        })
+
+    })
+
+    displaySeries(tabloption);
+
+
+});
+
+
+btnAjouter.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (inputName.value === "") {
+        champnom.hidden = false;
+
+    }
+    if (categorie.value === "") {
+
+        champgenre.hidden = false;
+    }
+    if (description.value === "") {
+
+        champdesc.hidden = false;
+    }
+    else {
+
+        Ajouter();
+        champnom.hidden = true;
+        champgenre.hidden = true;
+        champdesc.hidden = true;
+    }
+    displaySeries(arr);
+
+});
+
+Réinitialiser.addEventListener('click', (e) => {
+    e.preventDefault();
+    Recherche.value = "";
+
+    displaySeries(arr);
+
+})
+Recherche.addEventListener('input', function () {
     const namesrch = Recherche.value.trim().toLowerCase();
 
-    const resultat = arr.filter(serie=>{
-        return serie.name.trim().toLowerCase().includes(namesrch)
+    const resultat = arr.filter(serie => {
+        return serie.name.trim().toLowerCase().includes(namesrch);
     });
-        displaySeries(resultat);
+
+    displaySeries(resultat);
 
 });
 
-Genre.addEventListener('change',function(){
-const genresrch = Genre.value.trim().toLowerCase();
-
-const resultat = arr.filter(serie=>{
-    return serie.genre.toLowerCase().includes(genresrch)
-});
-displaySeries(resultat);
-});
