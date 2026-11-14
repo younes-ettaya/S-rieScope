@@ -40,8 +40,8 @@ S-rieScope/
 
 ## Suivi du projet sur Jira
 
-![Tableau de suivi Jira du projet SérieScope](<img width="996" height="303" alt="jira" src="https://github.com/user-attachments/assets/37abf854-fd8e-494c-a011-f870c835ade7" />
-)
+<img width="996" height="303" alt="jira" src="https://github.com/user-attachments/assets/24e40672-70cc-4eb1-8594-d5ec19b0532f" />
+
 
 ## Auteur
 
