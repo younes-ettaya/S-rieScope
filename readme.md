@@ -38,6 +38,10 @@ S-rieScope/
 └── assest/             # Ressources locales
 ```
 
+## Suivi du projet sur Jira
+
+![Tableau de suivi Jira du projet SérieScope](assest/jira.png)
+
 ## Auteur
 
 Développé par [Younes Ettaya](https://younes-ettaya.github.io/S-rieScope/).
