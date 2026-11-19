@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="AutoPark — Interface de gestion du parc automobile Atlas Auto." />
     <title>Sériescope</title>
-    <script type="module" src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.21.0/axios.min.js"></script>
+    <script type="module" src="./src/main.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -40,6 +41,7 @@
                     <p id="champnom" class="text-red-800" hidden>Nom invalid</p>
 
                 </div>
+               
                 <div action="" class="flex flex-col gap-2 lg:col-span-3">
                     <label for="categorie" class="text-white font-medium">Genre(s) * <span
                             class="text-gray-400  text-[12px]">séparés par des virgules</span></label>
@@ -71,26 +73,35 @@
             <p class="text-gray-400">Recherche par nom ou explore un genre.</p>
         </div>
         <div class="felx flex-col bg-slate-900 p-4 border-2  rounded-[8px] border-slate-300">
-            <form action="" class="grid grid-cols-1  gap-2 lg:grid-cols-2">
-                <div class="flex flex-col gap-2">
+            <form class="grid grid-cols-1  gap-5 md:grid-cols-4 lg:grid-cols-7">
+                <div class="flex flex-col gap-2 md:col-span-4 lg:col-span-3">
                     <label for="Recherche" class="text-white font-medium">Recherche</label>
                     <input type="text" class="text-white border-2 rounded-[8px] p-2" id="Recherche" name="Recherche"
                         placeholder="Ex. Drame, Comédie">
                 </div>
-                <div class=" flex flex-col gap-2">
-                    <label for="Genre" class=" text-white font-medium">Genre</label>
 
 
-                    <div class="grid grid-cols-2 gap-2 lg:grid-cols-3">
-                        <select name="Genre" id="Genre" class="text-white border-2 rounded-[8px] p-2 lg:col-span-2">
+                <div class="flex flex-col gap-2 md:col-span-2 lg:col-span-2">
+                    <label for="Genre" class="text-white font-medium">genre</label>
+                    <select name="Genre" id="Genre" class="text-white border-2 rounded-[8px] p-2 ">
 
-                        </select>
-
-
-                        <button type="reset" class="text-white border-2 rounded-[8px] p-2 " id="Réinitialiser">↻
-                            Réinitialiser</button>
-                    </div>
+                    </select>
                 </div>
+
+                <div class="flex flex-col gap-2 md:col-span-2 lg:col-span-2">
+                    <label for="Langues" class="text-white font-medium">Langues</label>
+                    <select name="Langues" id="Langues" class="text-white border-2 rounded-[8px] p-2 ">
+
+                    </select>
+                </div>
+
+
+                <div class="flex flex-col lg:col-span-1">
+                    <button type="reset" class="text-white border-2 rounded-[8px] p-2 " id="Réinitialiser">↻
+                        Réinitialiser</button>
+
+                </div>
+
 
             </form>
 
@@ -98,9 +109,10 @@
 
 
         <p class="text-gray-400  p-1" id="affichées"></p>
-        <div class=" grid grid-cols-1 gap-2 p-1 lg:grid-cols-4 md:grid-cols-2" id="liste-serie">
-
-            <!-- <div class="flex flex-col gap-2 border-2  rounded-[8px] border-slate-300 bg-slate-900 ">
+        <div class="grid grid-cols-1 gap-4 p-1 lg:grid-cols-4 md:grid-cols-2" id="liste-serie">
+            <!-- <div class=" flex flex-col h-full border-2 bg-slate-900 rounded-[8px] border-slate-300">
+            
+            <div class="flex flex-col gap-2  ">
                 <img src="assest\better call saul.jpg" alt=""  class="rounded-t-[8px] h-[55%]">
                 <h3 class="font-bold text-gray-100 p-2">Breaking Bad</h3>
                 <div class="flex gap-2 px-2">
@@ -109,7 +121,16 @@
 
                 </div>
                 <p class="text-gray-400 p-2 text-[12px]">Un professeur de chimie mène une double vie.</p>
-            </div> -->
+            </div>
+            <div class="flex justify-end items-center gap-2 p-2">
+                
+                    <button class="bg-black rounded-[12px] font-medium text-white p-2">Suprimer</button>
+                
+                    <button class="bg-black rounded-[12px] font-medium text-white p-2">Modifier</button>
+               
+            </div>
+    
+         </div> -->
         </div>
     </section>
 
