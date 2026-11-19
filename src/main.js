@@ -1,0 +1,86 @@
+// import {afficher} from "./services/serieService.js";
+// import {displaySeries} from "./ui/cards.js"
+
+//  async function init() {
+//     try{
+//         const series = await afficher()
+//         displaySeries(series)
+//     }catch(error){
+
+//     }
+// }
+// init();
+
+const btnAjouter = document.getElementById("btnAJouter");
+
+const champnom = document.getElementById("champnom");
+const champgenre = document.getElementById("champgenre");
+const champdesc = document.getElementById("champdesc");
+
+
+import { getAll } from "./services/serieService.js";
+import { displaySeries } from "./ui/cards.js";
+import { Ajouter } from "./ui/form.js";
+let data
+
+
+function validation() {
+    let chcker = true;
+    champnom.hidden = true;
+    champgenre.hidden = true;
+    champdesc.hidden = true;
+
+    if (inputName.value === "") {
+        champnom.hidden = false;
+        chcker = false;
+    }
+    if (categorie.value === "") {
+        champgenre.hidden = false;
+        chcker = false;
+
+    }
+
+    if (description.value === "") {
+        champdesc.hidden = false;
+        chcker = false;
+
+    }
+    return chcker;
+}
+
+
+async function init() {
+    try {
+        data = await getAll();
+
+        console.log("Réponse API :", data);
+
+        if (Array.isArray(data)) {
+            displaySeries(data);
+        } else {
+            console.log("Structure à vérifier :", data);
+        }
+
+    } catch (error) {
+        console.error("Erreur API :", error);
+    }
+}
+btnAjouter.addEventListener("click", (e) => {
+    e.preventDefault()
+    if (!validation()) {
+        return
+    }
+
+    else if (description.value !== "" || categorie.value !== "" || inputName.value !== "") {
+
+        Ajouter(data);
+        champnom.hidden = true;
+        champgenre.hidden = true;
+        champdesc.hidden = true;
+    }
+    displaySeries(data);
+  
+
+})
+
+init();
