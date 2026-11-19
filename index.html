@@ -34,15 +34,30 @@
             </div>
             <form class="grid grid-cols-1 gap-4 lg:grid-cols-6">
 
-                <div action="" class="flex flex-col gap-2 lg:col-span-3">
+                <div action="" class="flex flex-col gap-2 lg:col-span-2">
                     <label for="NomSrie" class="text-white font-medium">Nom de la série *</label>
                     <input class="text-white p-2 rounded-[8px] border-2" type="text" id="inputName"
                         placeholder="Ex. The Bear" required>
                     <p id="champnom" class="text-red-800" hidden>Nom invalid</p>
 
                 </div>
-               
-                <div action="" class="flex flex-col gap-2 lg:col-span-3">
+                <div action="" class="flex flex-col gap-2 lg:col-span-2">
+                    <label for="langue" class="text-white font-medium">Langue *</label>
+                    <input type="text" class="text-white p-2 rounded-[8px] border-2" id="langue" list="listeLangues"
+                        placeholder="Choisir ou rechercher une langue" required>
+                    <datalist id="listeLangues">
+                        <option value="English">
+                        <option value="French">
+                        <option value="Arabic">
+                        <option value="Spanish">
+                        <option value="Japanese">
+                        <option value="German">
+                        <option value="Korean">
+                    </datalist>
+                    <p id="champlang" class="text-red-800" hidden>Nom invalid</p>
+
+                </div>
+                <div action="" class="flex flex-col gap-2 lg:col-span-2">
                     <label for="categorie" class="text-white font-medium">Genre(s) * <span
                             class="text-gray-400  text-[12px]">séparés par des virgules</span></label>
                     <input class="text-white p-2 rounded-[8px] border-2" type="text" id="categorie" name="categorie"

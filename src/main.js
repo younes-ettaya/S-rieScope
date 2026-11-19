@@ -13,10 +13,16 @@
 
 const btnAjouter = document.getElementById("btnAJouter");
 
+const inputName = document.getElementById("inputName");
+const description = document.getElementById("description");
+const categorie = document.getElementById("categorie");
+const language = document.getElementById("langue");
+
+
 const champnom = document.getElementById("champnom");
 const champgenre = document.getElementById("champgenre");
 const champdesc = document.getElementById("champdesc");
-
+const champlang = document.getElementById("champlang");
 
 import { getAll } from "./services/serieService.js";
 import { displaySeries } from "./ui/cards.js";
@@ -29,6 +35,7 @@ function validation() {
     champnom.hidden = true;
     champgenre.hidden = true;
     champdesc.hidden = true;
+    champlang.hidden = true;
 
     if (inputName.value === "") {
         champnom.hidden = false;
@@ -42,6 +49,11 @@ function validation() {
 
     if (description.value === "") {
         champdesc.hidden = false;
+        chcker = false;
+
+    }
+    if (language.value === "") {
+        champlang.hidden = false;
         chcker = false;
 
     }
