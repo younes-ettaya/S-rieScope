@@ -1,15 +1,4 @@
-// import {afficher} from "./services/serieService.js";
-// import {displaySeries} from "./ui/cards.js"
 
-//  async function init() {
-//     try{
-//         const series = await afficher()
-//         displaySeries(series)
-//     }catch(error){
-
-//     }
-// }
-// init();
 
 const btnAjouter = document.getElementById("btnAJouter");
 

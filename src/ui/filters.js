@@ -1,6 +1,8 @@
 
-
+const Recherche = document.getElementById("Recherche");
 const recherche_par_genre = document.getElementById("Genre");
+
+
 let tableaux_genre = [];
 
 
@@ -27,6 +29,7 @@ export function getgenre() {
         recherche_par_genre.appendChild(option);
     });
 }
+
 
 
 export function search_sort() {
