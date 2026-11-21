@@ -35,7 +35,7 @@ Ouvrir le projet dans **VS Code**, puis lancer `index.html` avec l’extension *
 
 La capture ci-dessous présente le suivi des tâches du projet sur Jira.
 
-![Suivi des tâches SérieScope sur Jira](<img width="951" height="411" alt="SerieScope_jirra" src="https://github.com/user-attachments/assets/1f76a0e0-fce5-4485-9888-080fd1c11c90" />
+(<img width="951" height="411" alt="SerieScope_jirra" src="https://github.com/user-attachments/assets/1f76a0e0-fce5-4485-9888-080fd1c11c90" />
 )
 
 ## Auteur
