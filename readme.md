@@ -40,4 +40,3 @@ La capture ci-dessous présente le suivi des tâches du projet sur Jira.
 
 ## Auteur
 
-**Younes ET-TAYA** — Apprenant développeur web à **YouCode**.
