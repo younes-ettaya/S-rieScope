@@ -1,5 +1,7 @@
 import { remove } from "../services/serieService.js";
 import { getAll } from "../services/serieService.js";
+import { update } from "../services/serieService.js";
+import { getgenre } from "./filters.js"
 
 const liste_serie = document.getElementById("liste-serie");
 const affichées = document.getElementById("affichées");
@@ -69,13 +71,18 @@ export function displaySeries(array_Data) {
         button_Suprimer.className = "bg-lime-300  rounded-[12px]  text-black font-bold p-2"
         button_Suprimer.addEventListener("click", async () => {
             try {
-                
-                await remove(serie.id);
-                console.log("Série supprimée");
-                getAll()
-                .then (res => displaySeries(res))
+                const validation = confirm("valider la suppresion");
+                if (validation) {
+                    await remove(serie.id)
+                    console.log("serie supprimer");
+                    getAll()
+                        .then(res => displaySeries(res))
+                }
+
+
             } catch (error) {
                 console.error("Erreur suppression :", error);
+
             }
         });
 
@@ -86,10 +93,22 @@ export function displaySeries(array_Data) {
         const button_Modifer = document.createElement("button");
         button_Modifer.textContent = "Modifier"
         button_Modifer.className = "bg-lime-300  rounded-[12px] font-bold text-black p-2"
+        button_Modifer.addEventListener("click", async () => {
+            try {
+            await update(serie.id)
+            console.log("été Modifier");
+            getAll()
+                .then(res => displaySeries(res))
+             } catch (error) {
+                console.error("Erreur suppression :", error);
+
+            }
+
+        })
         div3.appendChild(button_Modifer);
-        
 
 
     })
+    getgenre()
 }
 

@@ -30,7 +30,7 @@ import { Ajouter } from "./ui/form.js";
 let data
 
 
-function validation() {
+ function validation() {
     let chcker = true;
     champnom.hidden = true;
     champgenre.hidden = true;
