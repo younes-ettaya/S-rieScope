@@ -4,7 +4,6 @@ import { Api } from "./api.js";
 export async function getAll(filter = {}){
     try {
         const response = await Api.get("/series",filter)
-        // console.log(response);
         
         return response.data;
         
