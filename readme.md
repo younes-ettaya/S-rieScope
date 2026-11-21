@@ -10,7 +10,8 @@ Application web de gestion d’un catalogue de séries TV, réalisée dans le ca
 
 ## Aperçu de l’interface
 
-![Formulaire d’ajout d’une série dans SérieScope](./serie_scopt.png)
+<img width="1500" height="545" alt="serie_scopt" src="https://github.com/user-attachments/assets/184701d6-d0a9-426d-a0db-6eb519ce4f64" />
+
 
 ## Formulaire « Ajouter une série »
 
