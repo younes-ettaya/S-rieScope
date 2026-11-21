@@ -85,7 +85,6 @@ export function displaySeries(array_Data) {
 
             }
         });
-
         div3.appendChild(button_Suprimer);
 
 

@@ -66,6 +66,8 @@ async function init() {
         console.error("Erreur API :", error);
     }
 }
+
+
 btnAjouter.addEventListener("click", (e) => {
     e.preventDefault()
     if (!validation()) {
