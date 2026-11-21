@@ -1,23 +1,26 @@
 # SérieScope
 
-**SérieScope** est une application web permettant de découvrir des séries TV, de rechercher un titre et de parcourir le catalogue par genre. Les premières séries sont récupérées depuis l'API publique 
+Application web de gestion d’un catalogue de séries TV, réalisée dans le cadre de la formation **YouCode**.
+
+## Liens utiles
+
+- [Consulter le site déployé](https://younes-ettaya.github.io/S-rieScope/)
+- [Accéder au dépôt GitHub](https://github.com/younes-ettaya/S-rieScope)
+- [Consulter le tableau Jira](https://younesettaya77-1793028290335.atlassian.net/jira/software/projects/SER/list?jql=project+%3D+SER+ORDER+BY+cf%5B10019%5D+ASC&atlOrigin=eyJpIjoiZmE3ZWUwN2NiN2U3NDYwYTg1YTA1M2VhYjdlODYzMGYiLCJwIjoiaiJ9)
 
 ## Fonctionnalités
 
-- Affichage d'un catalogue de séries avec titre, genres et résumé.
-- Recherche de séries par nom.
-- Filtrage du catalogue par genre.
-- Ajout d'une série à l'aide d'un formulaire avec validation des champs.
-- Réinitialisation des filtres et actualisation du catalogue sans rechargement de la page.
+- Affichage des séries sous forme de cartes : affiche, titre, genres et résumé.
+- Ajout d’une série avec vérification des champs obligatoires.
+- Suppression d’une série après confirmation.
+- Affichage du nombre de séries présentées.
+- Interface responsive adaptée aux mobiles et aux ordinateurs.
 
-> Les séries ajoutées sont conservées uniquement pendant la session : elles disparaissent au rechargement de la page.
+## Technologies
 
-## Technologies utilisées
+**HTML5**, **Tailwind CSS**, **JavaScript**, **Axios** et **API SérieScope**.
 
-- **HTML5** : structure de l'interface.
-- **Tailwind CSS** : mise en forme responsive.
-- **JavaScript Vanilla** : interactions et manipulation du DOM.
-- **API TVmaze** : récupération des données via `fetch()`.
+Le code JavaScript est organisé en modules dans le dossier `src/`, avec une séparation entre les appels à l’API et l’interface utilisateur. Le versionnement est assuré avec **Git et GitHub**, et le suivi des tâches avec **Jira**.
 
 ## Installation
 
@@ -26,23 +29,14 @@ git clone https://github.com/younes-ettaya/S-rieScope.git
 cd S-rieScope
 ```
 
-Ouvrir ensuite `index.html` avec un serveur local (par exemple l'extension **Live Server** de VS Code). Une connexion Internet est nécessaire pour charger les données depuis TVmaze et Tailwind CSS.
+Ouvrir le projet dans **VS Code**, puis lancer `index.html` avec l’extension **Live Server**. Une connexion Internet est nécessaire pour charger l’API et les dépendances externes.
 
-## Structure du projet
+## Suivi du projet
 
-```text
-S-rieScope/
-├── index.html          # Interface utilisateur
-├── script.js           # Logique JavaScript
-├── tailwind.config.js  # Configuration Tailwind
-└── assest/             # Ressources locales
-```
+La capture ci-dessous présente le suivi des tâches du projet sur Jira.
 
-## Suivi du projet sur Jira
-
-<img width="996" height="303" alt="jira" src="https://github.com/user-attachments/assets/24e40672-70cc-4eb1-8594-d5ec19b0532f" />
-
+![Suivi des tâches SérieScope sur Jira](./SerieScope_jirra.png)
 
 ## Auteur
 
-Développé par [Younes Ettaya](https://younes-ettaya.github.io/S-rieScope/).
+**Younes ET-TAYA** — Apprenant développeur web à **YouCode**.
