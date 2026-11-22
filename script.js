@@ -224,8 +224,6 @@ btnAjouter.addEventListener('click', (e) => {
 });
 
 
-
-
 // Effacer le contenu du recherche .
 Réinitialiser.addEventListener('click', (e) => {
     e.preventDefault();
