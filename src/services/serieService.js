@@ -9,6 +9,8 @@ export async function getAll(filter = {}){
         
     } catch (error) {
         console.error(error); 
+            throw error;
+
     }
 } 
 export async function getById(id){
@@ -29,17 +31,19 @@ export async function create(serie){
         
     } catch (error) {
         console.error(error); 
-        
+            throw error;
+
     }
 }
 export async function update(id ,serie){
     try {
-        const response = await Api.patch(`/series${id}`,serie)
+        const response = await Api.patch(`/series/${id}`,serie)
         return response.data
         
     } catch (error) {
         console.error(error); 
-        
+            throw error;
+
     }
 }
 export async function remove(id){
@@ -52,6 +56,8 @@ export async function remove(id){
     } catch (error) {
         console.error(error); 
         
+    throw error;
+
     }
 }
 

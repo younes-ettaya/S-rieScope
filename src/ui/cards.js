@@ -1,10 +1,11 @@
 import { remove } from "../services/serieService.js";
 import { getAll } from "../services/serieService.js";
-import { update } from "../services/serieService.js";
 import { getgenre } from "./filters.js"
+import { Modifier } from "./form.js";
 
 const liste_serie = document.getElementById("liste-serie");
 const affichées = document.getElementById("affichées");
+const language = document.getElementById("langue");
 
 
 
@@ -92,17 +93,9 @@ export function displaySeries(array_Data) {
         const button_Modifer = document.createElement("button");
         button_Modifer.textContent = "Modifier"
         button_Modifer.className = "bg-lime-300  rounded-[12px] font-bold text-black p-2"
-        button_Modifer.addEventListener("click", async () => {
-            try {
-            await update(serie.id)
-            console.log("été Modifier");
-            getAll()
-                .then(res => displaySeries(res))
-             } catch (error) {
-                console.error("Erreur suppression :", error);
+        button_Modifer.addEventListener("click", () => {
 
-            }
-
+            Modifier(serie);
         })
         div3.appendChild(button_Modifer);
 
