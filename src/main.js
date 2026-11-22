@@ -15,11 +15,11 @@ const champlang = document.getElementById("champlang");
 
 import { getAll } from "./services/serieService.js";
 import { displaySeries } from "./ui/cards.js";
-import { Ajouter } from "./ui/form.js";
+import { Enregistrer } from "./ui/form.js";
 let data
 
 
- function validation() {
+function validation() {
     let chcker = true;
     champnom.hidden = true;
     champgenre.hidden = true;
@@ -49,7 +49,6 @@ let data
     return chcker;
 }
 
-
 async function init() {
     try {
         data = await getAll();
@@ -67,23 +66,28 @@ async function init() {
     }
 }
 
+btnAjouter.addEventListener("click", async (e) => {
+    e.preventDefault();
 
-btnAjouter.addEventListener("click", (e) => {
-    e.preventDefault()
     if (!validation()) {
-        return
+        return;
     }
 
-    else if (description.value !== "" || categorie.value !== "" || inputName.value !== "") {
+    btnAjouter.disabled = true;
 
-        Ajouter(data);
-        champnom.hidden = true;
-        champgenre.hidden = true;
-        champdesc.hidden = true;
+    try {
+        await Enregistrer();
+
+        btnAjouter.textContent = "Ajouter";
+
+        // Njibo les données mises à jour mn serveur
+        data = await getAll();
+        displaySeries(data);
+    } catch (error) {
+        console.error("Erreur lors de l'enregistrement :", error);
+    } finally {
+        btnAjouter.disabled = false;
     }
-    displaySeries(data);
-  
-
-})
+});
 
 init();
