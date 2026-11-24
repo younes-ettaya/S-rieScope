@@ -1,11 +1,9 @@
 import { remove } from "../services/serieService.js";
 import { getAll } from "../services/serieService.js";
-import { getgenre } from "./filters.js"
 import { Modifier } from "./form.js";
 
 const liste_serie = document.getElementById("liste-serie");
 const affichées = document.getElementById("affichées");
-const language = document.getElementById("langue");
 
 
 
@@ -101,6 +99,5 @@ export function displaySeries(array_Data) {
 
 
     })
-    getgenre()
 }
 
