@@ -53,7 +53,6 @@ function annulerModification() {
     btnAjouter.textContent = "＋ Ajouter la série";
     btnAnnuler.hidden = true;
 
-    // Nkhbiw les messages de validation
     ["champnom", "champgenre", "champdesc", "champlang"].forEach(id => {
         document.getElementById(id).hidden = true;
     });

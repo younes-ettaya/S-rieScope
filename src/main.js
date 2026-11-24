@@ -16,6 +16,8 @@ const champlang = document.getElementById("champlang");
 import { getAll } from "./services/serieService.js";
 import { displaySeries } from "./ui/cards.js";
 import { Enregistrer } from "./ui/form.js";
+import { getgenre, search_sort } from "./ui/filters.js";
+
 let data
 
 
@@ -56,7 +58,12 @@ async function init() {
         console.log("Réponse API :", data);
 
         if (Array.isArray(data)) {
-            displaySeries(data);
+            data = await getAll();
+
+            if (Array.isArray(data)) {
+                getgenre(data);
+                displaySeries(data);
+            }
         } else {
             console.log("Structure à vérifier :", data);
         }
@@ -80,9 +87,11 @@ btnAjouter.addEventListener("click", async (e) => {
 
         btnAjouter.textContent = "Ajouter";
 
-        // Njibo les données mises à jour mn serveur
-        data = await getAll();
-        displaySeries(data);
+         data = await getAll();
+        getgenre(data);
+        await search_sort();
+
+        
     } catch (error) {
         console.error("Erreur lors de l'enregistrement :", error);
     } finally {

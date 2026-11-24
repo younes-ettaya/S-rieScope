@@ -1,50 +1,83 @@
+import { getAll } from "../services/serieService.js";
+import { displaySeries } from "./cards.js";
 
 const Recherche = document.getElementById("Recherche");
 const recherche_par_genre = document.getElementById("Genre");
+const recherche_par_langue = document.getElementById("Langues");
+const reinitialiser = document.getElementById("Réinitialiser");
 
+function remplirSelect(select, valeurs, texteVide) {
+    const ancienneValeur = select.value;
 
-let tableaux_genre = [];
+    select.textContent = "";
+    select.add(new Option(texteVide, ""));
 
+    valeurs.forEach(valeur => {
+        select.add(new Option(valeur, valeur));
+    });
 
+    if (valeurs.includes(ancienneValeur)) {
+        select.value = ancienneValeur;
+    }
+}
 
-export function getgenre() {
+export function getgenre(array_Data) {
+    const genres = [];
+    const langues = [];
+
     array_Data.forEach(serie => {
-        serie.genres.forEach(catey => {
-            if (!tableaux_genre.includes(catey)) {
-                tableaux_genre.push(catey);
+        serie.genres.forEach(genre => {
+            if (!genres.includes(genre)) {
+                genres.push(genre);
             }
         });
-    })
 
-    const option = document.createElement("option");
-    option.textContent = "touts les catygorie";
-    option.value = "";
-    option.className = "text-black";
-    recherche_par_genre.appendChild(option);
-    tableaux_genre.forEach(catey => {
-        const option = document.createElement("option");
-        option.textContent = catey;
-        option.value = catey;
-        option.className = "text-black";
-        recherche_par_genre.appendChild(option);
+        if (!langues.includes(serie.language)) {
+            langues.push(serie.language);
+        }
     });
+
+    remplirSelect(recherche_par_genre, genres, "Tous les genres");
+    remplirSelect(recherche_par_langue, langues, "Toutes les langues");
 }
 
+let numeroRecherche = 0;
 
+export async function search_sort() {
+    const rechercheActuelle = ++numeroRecherche;
 
-export function search_sort() {
+    const filtres = {
+        name: Recherche.value.trim(),
+        genre: recherche_par_genre.value,
+        language: recherche_par_langue.value
+    };
 
-    const recherche_par_nom = Recherche.value.trim().toLowerCase();
+    try {
+        const resultat = await getAll(filtres);
 
-    let resultat = array_Data.filter(serie => serie.name.trim().toLowerCase().includes(recherche_par_nom));
-
-    if (recherche_par_genre.value) {
-        resultat = resultat.filter(genre => genre.genres.includes(recherche_par_genre.value))
-        console.log(resultat);
-
+        if (rechercheActuelle === numeroRecherche) {
+            displaySeries(resultat);
+        }
+    } catch (error) {
+        console.error("Erreur de recherche :", error);
     }
-
-    displaySeries(resultat);
 }
-Recherche.addEventListener('input', search_sort)
-recherche_par_genre.addEventListener('change', search_sort)
+
+Recherche.addEventListener("input", search_sort);
+recherche_par_genre.addEventListener("change", search_sort);
+recherche_par_langue.addEventListener("change", search_sort);
+
+Recherche.closest("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    search_sort();
+});
+
+reinitialiser.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    Recherche.value = "";
+    recherche_par_genre.value = "";
+    recherche_par_langue.value = "";
+
+    search_sort();
+});
