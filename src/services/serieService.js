@@ -1,16 +1,16 @@
 import { Api } from "./api.js";
 
 
-export async function getAll(filter = {}){
+export async function getAll(filter = {}) {
     try {
-        const response = await Api.get("/series",filter)
-        
-        return response.data;
-        
-    } catch (error) {
-        console.error(error); 
-            throw error;
+        const response = await Api.get("/series", {
+            params: filter
+        });
 
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 } 
 export async function getById(id){
